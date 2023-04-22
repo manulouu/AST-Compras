@@ -3,9 +3,9 @@
     <input #ID type="text" class="form-control has-background-light" placeholder="ID del cliente">
     <button class="btn btn-primary m-2" (click)="getByIDCliente(ID.value)">Buscar por ID</button>
 
-    <input #ID type="text" class="form-control has-background-light" placeholder="ID del cliente">
+    <input #id type="text" class="form-control has-background-light" placeholder="ID del cliente">
     <input #nombre type="text" class="form-control has-background-light" placeholder="Nombre del comprador">
-    <button class="btn btn-primary m-2" (click)="getByIDClienteYNombre(ID.value, nombre.value)">Buscar por ID y nombre</button>
+    <button class="btn btn-primary m-2" (click)="getByIDClienteYNombre(id.value, nombre.value)">Buscar por ID y nombre</button>
 
     <button class="btn m-2" style="border: 2px solid black; border-radius: 5px; padding: 5px 10px; background-color: white; color: black;" (click)="showform()">Cancelar</button>
 </div>
