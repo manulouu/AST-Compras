@@ -1,0 +1,27 @@
+<div *ngIf="!showmodifyflag" class="grid-container">
+    <p class="black-text " *ngFor="let item of pokemons">
+        <ng-template [ngIf]="item.legendario">
+            <div class="legendary grid-item">
+                ID:{{item._id}}  <br> <img [src]="url1 + item.numero.toString().padStart(3, '0') + url2" width="300" height="300"> <br> Número:{{item.numero}}<br> Generación:{{item.generacion}} <br> Región:{{item.region}}<br> Tipo:{{item.tipo}} <br> ¿Evoluciona?:{{item.evolucion}}<br> ¿Legendario?:{{item.legendario}} <br>Cantidad:{{item.cantidad}} <br> Precio:{{item.precio}}$
+                <br> <button class="btn btn-primary btn-rounded-corners add-button m-2" (click)="showform(item._id, item.cantidad)">Comprar Pokémon</button>
+            </div>
+        </ng-template>
+        <ng-template [ngIf]="!item.legendario">
+            <div class="grid-item">
+                ID:{{item._id}}  <br> <img [src]="url1 + item.numero.toString().padStart(3, '0') + url2" width="300" height="300"> <br> Número:{{item.numero}}<br> Generación:{{item.generacion}} <br> Región:{{item.region}}<br> Tipo:{{item.tipo}} <br> ¿Evoluciona?:{{item.evolucion}}<br> ¿Legendario?:{{item.legendario}} <br>Cantidad:{{item.cantidad}} <br> Precio:{{item.precio}}$
+                <br> <button class="btn btn-primary btn-rounded-corners add-button m-2" (click)="showform(item._id, item.cantidad)">Comprar Pokémon</button>
+            </div>
+        </ng-template>
+</div>
+    <div *ngIf="showformflag">
+        <input #compraInput1 type="text" class="form-control has-background-light" [value]="idPokemon" readonly>
+        <input #compraInput2 type="text" class="form-control has-background-light" placeholder="ID del cliente">
+        <input #compraInput3 type="number" class="form-control has-background-light" placeholder="Cantidad a comprar">
+        <input #compraInput4 type="text" class="form-control has-background-light" placeholder="Nombre del comprador">
+        <input #compraInput5 type="text" class="form-control has-background-light" placeholder="Dirección de envío">
+    
+        <button class="btn " style="border: 2px solid black; border-radius: 5px; padding: 5px 10px; background-color: white; color: black;" (click)="cancelform()"> Cancelar</button>
+        <button class="btn btn-primary m-2"
+            (click)="addCompra(compraInput1.value, compraInput2.value, compraInput3.valueAsNumber, compraInput4.value, compraInput5.value)"
+            routerLink="/">Comprar</button>
+    </div>

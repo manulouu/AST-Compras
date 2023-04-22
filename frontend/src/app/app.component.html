@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<div class="container mt-3">
+  <router-outlet></router-outlet>
+  <hr>
+  <div class="row">
+    <div class="col text-center">
+      <button class="btn btn-primary btn-rounded-corners add-button m-2" (click)="activarShowCompras()">Mostrar Todos</button>
+      <app-get-compra (rstatus)="onrstatus($event)" (click)="desactivarMostrar()"></app-get-compra>
+    </div>
+  </div>
+  <hr>
+  <app-show-pokemon (rstatus)="onrstatus($event)" *ngIf="showCompraVisible"></app-show-pokemon>
+</div>
+
+  <div class="grid-container">
+    <div *ngIf="success">
+      La operación se ha realizado con éxito
+      <button class="btn btn-primary btn-rounded-corners add-button m-2" (click)="cancelmessage()">OK</button>
+    </div>
+    <div *ngIf="failure">
+      La operación no se ha podido realizar con éxito
+      <button class="btn btn-primary btn-rounded-corners add-button m-2" (click)="cancelmessage()">OK</button>
+    </div>
+    </div>

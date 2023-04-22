@@ -1,0 +1,38 @@
+<button class="btn btn-primary btn-rounded-corners add-button m-2" (click)="showform()">Buscar Compra</button>
+<div *ngIf="showformflag">
+    <input #ID type="text" class="form-control has-background-light" placeholder="ID del cliente">
+    <button class="btn btn-primary m-2" (click)="getByIDCliente(ID.value)">Buscar por ID</button>
+
+    <input #ID type="text" class="form-control has-background-light" placeholder="ID del cliente">
+    <input #nombre type="text" class="form-control has-background-light" placeholder="Nombre del comprador">
+    <button class="btn btn-primary m-2" (click)="getByIDClienteYNombre(ID.value, nombre.value)">Buscar por ID y nombre</button>
+
+    <button class="btn m-2" style="border: 2px solid black; border-radius: 5px; padding: 5px 10px; background-color: white; color: black;" (click)="showform()">Cancelar</button>
+</div>
+
+<div *ngIf="showresults"class="grid-container">
+    <p class="black-text " *ngFor="let item of compras">
+        <ng-template [ngIf]="item">
+            <div class="grid-item">
+                ID de Compra:{{item._id}} <br> ID del artículo:{{item.idArticulo}} <br> ID del cliente:{{item.idCliente}} <br> Cantidad:{{item.cantidad}} <br> Nombre:{{item.nombre}} <br> Dirección de envío:{{item.direccionEnvio}}
+            </div>
+        </ng-template>
+        <button class="btn btn-primary btn-rounded-corners m-2" (click)="deleteCompra(item)">
+            Eliminar Compra
+        </button>
+        <button class="btn btn-primary btn-rounded-corners m-2" (click)="modify(item)">
+            Modificar Compra
+        </button>
+</div>
+
+<div *ngIf="showmodifyflag" class="grid-item">
+    <label>Nombre:</label>
+    <input #compraInput1 [(ngModel)]="compraSeleccionada.nombre" name="nombre" type="text">
+    <br>
+    <label>Dirección de envío:</label>
+    <input #compraInput2 [(ngModel)]="compraSeleccionada.direccionEnvio" name="direccionEnvio" type="text">
+    <br>
+    <button class="btn m-2" (click)="cancelmodify()"> Cancelar</button>
+    <button class="btn btn-primary m-2"
+        (click)="modifyCompra(compraSeleccionada._id, compraSeleccionada.idArticulo, compraSeleccionada.idCliente, compraSeleccionada.cantidad, compraInput1.value, compraInput2.value)">Modify</button>
+</div>

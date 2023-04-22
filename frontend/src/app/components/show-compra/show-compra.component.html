@@ -1,0 +1,28 @@
+<div *ngIf="!showmodifyflag"class="grid-container">
+    <p class="black-text " *ngFor="let item of compras">
+        <ng-template [ngIf]="item">
+            <div class="grid-item">
+            ID de Compra: {{item._id}} <br> ID del artículo: {{item.idArticulo}} <br> ID del cliente: {{item.idCliente}} <br> Cantidad: {{item.cantidad}} <br> Nombre: {{item.nombre}} <br> Dirección de envío: {{item.direccionEnvio}}
+            </div>
+        </ng-template>
+        <button class="btn btn-primary btn-rounded-corners m-2" (click)="deleteCompra(item)">
+            Eliminar Compra
+        </button>
+        <button class="btn btn-primary btn-rounded-corners m-2" (click)="modify(item)">
+            Modificar Compra
+        </button>
+
+</div>
+
+<div *ngIf="showmodifyflag" class="grid-item">
+    <label>Nombre:</label>
+    <input #compraInput1 [(ngModel)]="compraSeleccionada.nombre" name="nombre" type="text">
+    <br>
+    <label>Dirección de envío:</label>
+    <input #compraInput2 [(ngModel)]="compraSeleccionada.direccionEnvio" name="direccionEnvio" type="text">
+    <br>
+    <button class="btn m-2" (click)="cancelmodify()"> Cancelar</button>
+    <button class="btn btn-primary m-2"
+        (click)="modifyCompra(compraSeleccionada._id, compraSeleccionada.idArticulo, compraSeleccionada.idCliente, compraSeleccionada.cantidad, compraInput1.value, compraInput2.value)">Modify</button>
+</div>
+

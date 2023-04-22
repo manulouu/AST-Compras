@@ -1,0 +1,10 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%; /* Ajusta el ancho al 100% de la pantalla */
+}
+.grid-item {
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    text-align: left;
+    padding: 10px; /* Agrega un espacio de 10 píxeles alrededor del contenido */
+}
